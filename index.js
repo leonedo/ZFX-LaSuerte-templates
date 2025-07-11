@@ -316,20 +316,8 @@ webcg.on('stop', function () {
     console.log('stop')
     clearTimeout(loopRepeat);
     loopAnimation = false;
-    nextAnimation = 'stop'
-
-    if (anim.isPaused) {
-        if (!loopExternal) {
-            anim.goToAndPlay('stop', true)
-            isOn = false
-        }
-
-        if (loopExits && loopExternal && externalLoop.isPaused) {
-            externalLoop.goToAndPlay('stop', true);
-            anim.goToAndPlay('stop', true)
-            isOn = false
-        }
-    }
+    anim.goToAndPlay('stop', true)
+    isOn = false
 
 });
 

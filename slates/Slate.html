@@ -85,7 +85,15 @@
             setTimeout(() => {
                 container.classList.remove('alert');
             }, 5000);
+
+            
         });
+
+        webcg.on('stop', function () {
+            console.log('stop') 
+                document.getElementById('f0').innerHTML =" ";
+                document.getElementById('f1').innerHTML =" ";
+            });
     </script>
 </body>
 </html>

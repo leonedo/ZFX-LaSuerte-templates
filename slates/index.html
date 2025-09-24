@@ -60,6 +60,11 @@
                 container.classList.remove('alert');
             }, 5000)
         });
+         webcg.on('stop', function () {
+            console.log('stop') 
+                document.getElementById('text-container').innerHTML = ""
+             
+            });
     </script>
 
 

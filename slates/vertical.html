@@ -78,6 +78,11 @@
                 setTimeout(() => f0.classList.remove('alert'), 5000);
             });
 
+             webcg.on('stop', function () {
+            console.log('stop') 
+                f0.innerHTML = " ";
+            });
+
         }).catch(() => {
             console.warn('Font failed to load, fallback will be used.');
             f0.style.visibility = 'visible'; // show anyway

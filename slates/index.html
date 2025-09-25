@@ -12,13 +12,13 @@
         body {
             overflow: hidden;
             margin: 0;
-            font-size: 125px;
+            font-size: 80px;
             text-align: center;
             color: white;
-            background-color: black;
+            background-color: transparent;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             width: 100vw;
             font-family: Arial, Helvetica, sans-serif;
@@ -26,9 +26,14 @@
         #text-container{
             width: 80%;
             max-width: 1200px;
-            
+            margin-top: 25vh;
             padding: 20px;
             border-radius: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+                         -2px -2px 4px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
         }
         .alert {
             animation: blink 0.5s infinite alternate;
@@ -43,14 +48,17 @@
 </head>
 
 <body>
-    <div id="text-container">TELEPROMPTER</div>
+    <div id="text-container">MODO ESNSAYO</div>
     
     <script src="../webcg-framework.umd.js"></script>
     <script>
 
         webcg.on('data', function (data) {
             console.log('new data')
-            document.getElementById('text-container').innerHTML = data['texto']
+            if (data && data.texto && data.texto.trim() !== '') {
+                document.getElementById('text-container').style.display = "block";
+                document.getElementById('text-container').innerHTML = data['texto'];
+            } 
         });
         webcg.on('alert', function () {
             console.log('alert')
@@ -62,7 +70,7 @@
         });
          webcg.on('stop', function () {
             console.log('stop') 
-                document.getElementById('text-container').innerHTML = ""
+                document.getElementById('text-container').style.display = "none";
              
             });
     </script>

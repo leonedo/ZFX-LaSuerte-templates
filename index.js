@@ -16,6 +16,8 @@ let loopExternal = false;
 let loopRepeat;
 let loopDuration = 0;
 let loopTiming;
+let miniloopAnimation = false;
+let miniloopDuration = 0;
 
 
 //update
@@ -163,6 +165,10 @@ anim.addEventListener('config_ready', function (e) {
           
         }
     })
+    isMarker(anim, 'name', 'miniloop').then((res) => {
+        miniloopAnimation = res
+
+    })
     //checking for a update animation in the animation 
     isMarker(anim, 'name', 'update').then((res) => {
         updateAnimation = res
@@ -186,6 +192,8 @@ anim.addEventListener('config_ready', function (e) {
     }
 
 });
+
+
 
 const animPromise = makeAnimPromise()
 
@@ -286,7 +294,13 @@ anim.addEventListener('complete', () => {
         anim.goToAndPlay(nextAnimation, true)
         isOn = false
 
-    } else if (isOn && nextAnimation !== 'no animation' && !loopExternal) {
+     } else if (nextAnimation === 'miniloop' && miniloopAnimation && isOn) {
+        loopRepeat = setTimeout(() => {
+            anim.goToAndPlay('miniloop', true);
+        }, framesMilliseconds * 0)
+
+     } 
+    else if (isOn && nextAnimation !== 'no animation' && !loopExternal) {
         anim.goToAndPlay(nextAnimation, true)
         if (loopExits && !loopExternal) {
             loopAnimation = true;
@@ -324,6 +338,9 @@ webcg.on('stop', function () {
 webcg.on('playAnimation', function (animationName) {
     console.log('playAnimation ' + animationName)
     anim.goToAndPlay(animationName, true);
+    if (animationName === 'bolo6') {
+        nextAnimation = "miniloop";
+    }
 });
 
 webcg.on('update', function () {

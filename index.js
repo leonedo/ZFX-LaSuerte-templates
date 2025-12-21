@@ -338,7 +338,7 @@ webcg.on('stop', function () {
 webcg.on('playAnimation', function (animationName) {
     console.log('playAnimation ' + animationName)
     anim.goToAndPlay(animationName, true);
-    if (animationName === 'bolo6') {
+    if (animationName === 'bolo6' || animationName === 'full') {
         nextAnimation = "miniloop";
     }
 });

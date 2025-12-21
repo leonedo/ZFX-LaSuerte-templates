@@ -362,8 +362,8 @@
             "ddd": 0,
             "ind": 5,
             "ty": 5,
-            "nm": ".f1",
-            "cl": "f1",
+            "nm": ".bolo_1",
+            "cl": "bolo_1",
             "parent": 9,
             "sr": 1,
             "ks": {
@@ -485,8 +485,8 @@
             "ddd": 0,
             "ind": 6,
             "ty": 5,
-            "nm": ".f2",
-            "cl": "f2",
+            "nm": ".bolo_2",
+            "cl": "bolo_2",
             "parent": 10,
             "sr": 1,
             "ks": {
@@ -608,8 +608,8 @@
             "ddd": 0,
             "ind": 7,
             "ty": 5,
-            "nm": ".f3",
-            "cl": "f3",
+            "nm": ".bolo_3",
+            "cl": "bolo_3",
             "parent": 11,
             "sr": 1,
             "ks": {
@@ -731,8 +731,8 @@
             "ddd": 0,
             "ind": 8,
             "ty": 5,
-            "nm": ".t6",
-            "cl": "t6",
+            "nm": ".fecha",
+            "cl": "fecha",
             "parent": 17,
             "sr": 1,
             "ks": {
@@ -5292,9 +5292,19 @@
     ],
     "markers": [
            {
-            "tm": 0,
+            "tm": -10,
             "cm": "play",
-            "dr": 300
+            "dr": 10
+        },
+         {
+            "tm": 0,
+            "cm": "inicio",
+            "dr": 200
+        },
+        {
+            "tm": 0,
+            "cm": "full",
+            "dr": 320
         },
          {
             "tm": 200,

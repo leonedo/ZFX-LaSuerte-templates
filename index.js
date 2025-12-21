@@ -326,6 +326,8 @@ webcg.on('play', function () {
 
 });
 
+
+
 webcg.on('stop', function () {
     console.log('stop')
     clearTimeout(loopRepeat);
@@ -335,13 +337,32 @@ webcg.on('stop', function () {
 
 });
 
-webcg.on('playAnimation', function (animationName) {
-    console.log('playAnimation ' + animationName)
-    anim.goToAndPlay(animationName, true);
-    if (animationName === 'bolo6' || animationName === 'full') {
-        nextAnimation = "miniloop";
-    }
-});
+
+
+const animationRules = {
+    bolo6: { next: 'miniloop' },
+    full:  { next: 'miniloop' }
+};
+
+function playAnimation(animationName) {
+    animPromise.then(() => {
+        
+         // guard: marker must exist
+        if (!anim?.markers?.some(m => m.payload?.name === animationName)) {
+            console.warn('Marker not found:', animationName);
+            return;
+        }
+        anim.goToAndPlay(animationName, true);
+        isOn = true;
+        nextAnimation = animationRules[animationName]?.next ?? 'no animation';
+    });
+}
+
+webcg.on('inicio', () => playAnimation('inicio'));
+webcg.on('full',   () => playAnimation('full'));
+for (let i = 1; i <= 6; i++) {
+    webcg.on(`bolo${i}`, () => playAnimation(`bolo${i}`));
+}
 
 webcg.on('update', function () {
     if (!loopExternal) {

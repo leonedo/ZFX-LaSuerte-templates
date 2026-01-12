@@ -2,16 +2,17 @@ const ticker = document.getElementById('tickerText');
 const container = document.querySelector('.ticker-container');
 const scrollSpeed = 180; // pixels per second
 // Use either a symbol or an image as the separator
-const separator = `<span style="margin: 0 20px;">|</span>`;
+//const separator = `<span style="margin: 0 20px;">|</span>`;
 // OR for an image:
-// const separator = `<img src="icon.png" style="height: 32px; margin: 0 40px;">`;
+ const separator = `<img src="BoloRojo.png" style="height: 32px; margin: -3px 20px;">`;
 
-const mensajes = [
-  "📢 Initial ticker message scrolling across...",
-  "✅ Update 1: Streaming will begin shortly.",
-  "🚨 Alert: Network maintenance at midnight.",
-  "🎥 New content available in the media library!"
-];
+//Sample JSON
+// {"mensajes" = [
+//  "📢 Initial ticker message scrolling across...",
+//  "✅ Update 1: Streaming will begin shortly.",
+//  "🚨 Alert: Network maintenance at midnight.",
+//  "🎥 New content available in the media library!"
+// ]}
 
 
 function startTicker(messagesArray) {
@@ -20,7 +21,7 @@ function startTicker(messagesArray) {
     return;
   }
 
-  const concatenated = messagesArray.join(separator) + separator + messagesArray[0];
+  const concatenated = messagesArray.join(separator) //+ separator + messagesArray[0];
   ticker.innerHTML = concatenated;
 
   requestAnimationFrame(() => {
